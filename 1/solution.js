@@ -25,7 +25,6 @@ for (var i = 0; i < sortedNum1.length; i++) {
     distanceSum += Math.abs(sortedNum1[i] - sortedNum2[i]);
 }
 // Similarity Score
-// sortedNum1[i] * freq(sortedNum1[i] in sortedNum2)
 var similarityScore = 0;
 for (var i = 0; i < sortedNum1.length; i++) {
     var freqNum1 = 0;
