@@ -31,27 +31,24 @@ function isSafe(report) {
         isSafe = false;
         // If a level differs from the previous level by more than 3 => UNSAFE
         if (Math.abs(report[j + 1] - report[j]) > 3) {
-            badLevel++;
+            break;
         }
         // If a level is equal to the previous level => UNSAFE
         else if ((report[j] == report[j + 1])) {
-            badLevel++;
+            break;
         }
         // If levels increase then decrease => UNSAFE
-        else if ((report[0] < report[1]) && ((report[j] > report[j + 1]))) {
-            badLevel++;
+        else if ((report[j] < report[j + 1]) && ((report[j + 1] > report[j + 2]))) {
+            break;
         }
         // If levels decrease then increase =>
-        else if ((report[0] > report[1]) && ((report[j] < report[j + 1]))) {
-            badLevel++;
+        else if ((report[j] > report[j + 1]) && ((report[j + 1] < report[j + 2]))) {
+            break;
         }
         // If it passes the above conditions, guess it must be SAFE
         else {
             isSafe = true;
         }
-    }
-    if (badLevel > 1) {
-        isSafe = false;
     }
     return isSafe;
 }
