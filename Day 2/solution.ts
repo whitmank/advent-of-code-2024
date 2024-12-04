@@ -153,13 +153,6 @@ const reports = parseInput(inputFilePath);
 const numSafeReports = evaluateReports(reports);
 const numSafeWithPD = evaluateReportsWithPD(reports);
 
-// const test = [77, 77, 74, 72, 71, 69, 66, 61]
-// console.log("Test Report: ", test)
-// evaluateReportsWithPD([test])
-
-
 // Print number of safe reports.
 console.log('Safe Reports:', numSafeReports);
 console.log('Safe Reports with Problem Dampener:', numSafeWithPD);
-
-// 82 85 86 83 85 87 89 
