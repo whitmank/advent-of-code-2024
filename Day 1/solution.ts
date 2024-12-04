@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 
 /** TODO
  * Processes input from a text file of numbers to an array.
