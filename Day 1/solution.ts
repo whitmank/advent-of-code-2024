@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 /** TODO
  * Processes input from a text file of numbers to an array.
- * @param puzzleInput path to input.txt
+ * @param puzzleInput path to 'input.txt'
  * @returns locations[{ num1, num2 }]
  */
 function parseInput(puzzleInput: string): Array<{ num1: number; num2: number }> {
@@ -24,7 +24,7 @@ function parseInput(puzzleInput: string): Array<{ num1: number; num2: number }> 
 
 /** TODO
  * Sorts the location array by splitting num1 and num2 components into separate arrays.
- * @param parsedLocations[]
+ * @param locations[]
  * @returns sortedLocations = { sortedNum1: number[], sortedNum2: number[] }
  */
 

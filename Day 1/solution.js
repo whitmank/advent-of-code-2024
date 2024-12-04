@@ -24,7 +24,7 @@ function parseInput(puzzleInput) {
 }
 /** TODO
  * Sorts the location array by splitting num1 and num2 components into separate arrays.
- * @param parsedLocations[]
+ * @param locations[]
  * @returns sortedLocations = { sortedNum1: number[], sortedNum2: number[] }
  */
 function sortLists(locations) {
