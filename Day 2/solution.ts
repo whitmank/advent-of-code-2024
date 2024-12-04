@@ -104,7 +104,7 @@ function isSafePD(report: number[]): boolean {
         else if ((report[j] == report[j + 1])) {
             safe = problemDampener(report);
             return safe;
-        }``
+        }
         // If levels increase then decrease => UNSAFE
         else if ((report[j] < report[j + 1]) && ((report[j + 1] > report[j + 2]))) {
             safe = problemDampener(report);
