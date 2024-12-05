@@ -23,14 +23,14 @@ function filterDisabled(matchingStrings: string[]): string[] {
     // start enabled - accept all muls
     let enabled = true;
     matchingStrings.forEach(match => {
-        if (enabled && regexMul.test(match)) {
-            enabledStrings.push(match)
-        }
-        else if (regexDo.test(match)) {
+        if (regexDo.test(match)) {
             enabled = true;
         }
         else if (regexDont.test(match)) {
             enabled = false;
+        }
+        else if (enabled && regexMul.test(match)) {
+            enabledStrings.push(match)
         }
     })
     return enabledStrings
@@ -66,11 +66,6 @@ function sumNums(numbers: number[]): number {
 /* Run Program */
 /***************/
 const FILEPATH = './input.txt'
-
-// PATTERN_MUL(000,000) = /mul\(([0-9]{1,3}),([0-9]{1,3})\)/g
-// PATTERN_DO           = /do\(\)/
-// PATTERN_DONT         = /don't\(\)/
-
 
 const matchingStrings = parseInput(FILEPATH, PATTERN);
 const enabledStrings = filterDisabled(matchingStrings);
