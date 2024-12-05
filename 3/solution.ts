@@ -7,7 +7,17 @@ const regexDo = /do\(\)/
 const regexDont = /don't\(\)/
 const PATTERN = /mul\(([0-9]{1,3}),([0-9]{1,3})\)|do\(\)|don't\(\)/g
 
-function parseInput(puzzleInput: string, pattern: RegExp): string[] {
+function parseInputOnlyMuls(puzzleInput: string, pattern: RegExp): number[][] {
+    const input = fs.readFileSync(puzzleInput, 'utf-8');
+    const matches: number[][] = [];
+    let match;
+    while ((match = pattern.exec(input)) !== null) {
+        matches.push([parseInt(match[1], 10), parseInt(match[2], 10)]);
+    }
+    return matches;
+}
+
+function parseInputWithInstructions(puzzleInput: string, pattern: RegExp): string[] {
     const input = fs.readFileSync(puzzleInput, 'utf-8');
     const matchingStrings: string[] = [];
     let match;
@@ -18,7 +28,6 @@ function parseInput(puzzleInput: string, pattern: RegExp): string[] {
 }
 
 function filterDisabled(matchingStrings: string[]): string[] {
-    console.log(matchingStrings)
     const enabledStrings: string[] = [];
     // start enabled - accept all muls
     let enabled = true;
@@ -67,16 +76,33 @@ function sumNums(numbers: number[]): number {
 /***************/
 const FILEPATH = './input.txt'
 
-const matchingStrings = parseInput(FILEPATH, PATTERN);
-const enabledStrings = filterDisabled(matchingStrings);
-const numberPairs = stringsToNumbers(enabledStrings);
+// PART 1
+const matches = parseInputOnlyMuls(FILEPATH, regexMul);
 
 const products: number[] = [];
-numberPairs.forEach(pair => {
-    const product = multiplyNums(pair);
+matches.forEach(match => {
+    const product = multiplyNums(match);
     products.push(product);
 })
 
 const sumOfProducts = sumNums(products);
 
-console.log("Sum: ", sumOfProducts);
+console.log("Sum of All muls(): ", sumOfProducts);
+
+// PART 2
+const matchingStrings = parseInputWithInstructions(FILEPATH, PATTERN);
+const enabledStrings = filterDisabled(matchingStrings);
+const numberPairs = stringsToNumbers(enabledStrings);
+
+const enabledProducts: number[] = [];
+numberPairs.forEach(pair => {
+    const product = multiplyNums(pair);
+    enabledProducts.push(product);
+})
+
+const sumOfEnabledProducts = sumNums(enabledProducts);
+
+
+console.log("Sum of Enabled muls(): ", sumOfEnabledProducts);
+
+
