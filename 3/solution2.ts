@@ -31,11 +31,11 @@ function filterDisabled(matchingStrings: string[]): string[] {
     // start enabled - accept all muls
     let enabled = true;
     matchingStrings.forEach(match => {
-        if (regexDont.test(match)) {
-            enabled = false;
-        }
-        else if (regexDo.test(match)) {
+        if (regexDo.test(match)) {
             enabled = true;
+        }
+        else if (regexDont.test(match)) {
+            enabled = false;
         }
         else if (enabled && regexMul.test(match)) {
             enabledStrings.push(match)
