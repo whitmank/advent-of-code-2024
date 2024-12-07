@@ -23,7 +23,7 @@ function parseInput(puzzleInput: string): number[][] {
 /** TODO
  * Evaluates if a single report is safe or unsafe.
  * @param report
- * @returns boolean — true if safe, false if unsafe.
+ * @returns boolean — true if safe, false if unsafe.
  */
 function isSafe(report: number[],): boolean {
     let safe = false;
